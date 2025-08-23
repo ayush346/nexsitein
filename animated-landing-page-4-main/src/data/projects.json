@@ -1,0 +1,40 @@
+{
+  "mobile": [
+    {
+      "id": "mobile-1",
+      "title": "TaskFlow Mobile",
+      "description": "A comprehensive productivity app with task management, team collaboration, and real-time synchronization across devices",
+      "image": "/ss1.png"
+    }
+  ],
+  "software": [
+    {
+      "id": "software-1",
+      "title": "DataSync Enterprise",
+      "description": "Enterprise-grade data synchronization platform with real-time analytics, automated backups, and multi-cloud integration",
+      "image": "/ss2.png"
+    },
+    {
+      "id": "software-2",
+      "title": "CloudOps Manager",
+      "description": "Comprehensive cloud operations management suite with infrastructure monitoring, automated scaling, and cost optimization",
+      "image": "/ss1.png"
+    }
+  ],
+  "web": [
+    {
+      "id": "web-1",
+      "title": "HireBuddy",
+      "description": "Land your next opportunity without lifting a finger. Answer a brief set of questions, and our AI will match you with opportunities, tailor your applications, and submit them — automating your whole search for the right role.",
+      "image": "/ss1.png",
+      "url": "https://www.hirebuddy.net/"
+    },
+    {
+      "id": "web-2",
+      "title": "Cryptonic Labs",
+      "description": "Building the future of Technical Content. Supercharge your brand with Cryptonic Labs. We offer DevRel-as-a-Service for early-stage DevTools and SaaS startups",
+      "image": "/ss2.png",
+      "url": "https://cryptoniclabs.com/"
+    }
+  ]
+}

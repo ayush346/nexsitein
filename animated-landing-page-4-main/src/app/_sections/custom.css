@@ -1,0 +1,124 @@
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes underline-expand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes grid-movement {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+@keyframes rating-pop-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-infinite-scroll {
+  animation: infinite-scroll 30s linear infinite;
+}
+.animate-rating-pop-in {
+  animation: rating-pop-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.shine-text {
+  background: linear-gradient(
+    90deg,
+    #ffffff99 0%,
+    #ffffff 25%,
+    #ffffff99 50%,
+    #ffffff 75%,
+    #ffffff99 100%
+  );
+  background-size: 200% auto;
+  color: #0000;
+  background-clip: text;
+  animation: shine 10s linear infinite reverse;
+}
+.animate-infinite-scroll {
+  animation: infinite-scroll 100s linear infinite;
+}
+.scroll-container {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 100px,
+    black calc(100% - 100px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 100px,
+    black calc(100% - 100px),
+    transparent 100%
+  );
+}
+.scroll-x-hide::-webkit-scrollbar,
+.scroll-x-hide *::-webkit-scrollbar {
+  display: none !important;
+}
