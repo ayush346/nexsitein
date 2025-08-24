@@ -76,7 +76,7 @@ export function ContactSection() {
           "_blank"
         );
       }
-    } catch (err) {
+    } catch {
       setSent("err");
       // Fallback to mailto so the user can still contact
       const subject = encodeURIComponent(
