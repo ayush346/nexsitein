@@ -294,7 +294,8 @@ export function ContactSection() {
                         icon: Facebook,
                         color: "#1111aa",
                         label: "Facebook",
-                        link: "https://www.facebook.com/nexsite.in",
+                        link:
+                          "https://www.facebook.com/share/1Ddpxibruq/?mibextid=wwXIfr",
                       },
                       {
                         icon: Instagram,
@@ -306,7 +307,7 @@ export function ContactSection() {
                         icon: Linkedin,
                         color: "#0A66C2",
                         label: "LinkedIn",
-                        link: "https://www.linkedin.com/company/nexsite-consultancy/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BYYAnhvViQiCaj6CNZbWDnQ%3D%3D",
+                        link: "https://www.linkedin.com/company/nexsiteagri/about/",
                       },
                       {
                         icon: Youtube,
@@ -318,13 +319,14 @@ export function ContactSection() {
                         icon: XLogo,
                         color: "#FF0000",
                         label: "X",
-                        link: "https://www.x.com/nexsiteLLP",
+                        link: "https://x.com/Nexsite_?t=B37i7XcVamup2_MU-F97-w&s=08",
                       },
                     ].map((Social, index) => (
                       <motion.a
                         key={index}
                         href={Social.link}
                         target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.05, y: -4 }}
                         whileTap={{ scale: 0.95 }}
                         className="p-4 rounded-[16px] flex flex-col items-center justify-center gap-2 hover:bg-white/90 transition-all duration-300 cursor-pointer"

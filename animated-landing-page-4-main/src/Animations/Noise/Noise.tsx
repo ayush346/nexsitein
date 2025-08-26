@@ -15,11 +15,11 @@ interface NoiseProps {
 }
 
 const Noise: React.FC<NoiseProps> = ({
-  patternSize = 250,
+  patternSize = 128,
   patternScaleX = 1,
   patternScaleY = 1,
-  patternRefreshInterval = 2,
-  patternAlpha = 15,
+  patternRefreshInterval = 8,
+  patternAlpha = 12,
 }) => {
   const grainRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -31,6 +31,7 @@ const Noise: React.FC<NoiseProps> = ({
     if (!ctx) return;
 
     let frame = 0;
+    let animationId: number | null = null;
 
     const patternCanvas = document.createElement("canvas");
     patternCanvas.width = patternSize;
@@ -43,10 +44,12 @@ const Noise: React.FC<NoiseProps> = ({
 
     const resize = () => {
       if (!canvas) return;
-      canvas.width = window.innerWidth * window.devicePixelRatio;
-      canvas.height = window.innerHeight * window.devicePixelRatio;
-
-      ctx.scale(patternScaleX, patternScaleY);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      // Reset and apply transform so we don't accumulate scale on each resize
+      // Scale by DPR and any provided pattern scale
+      ctx.setTransform(dpr * patternScaleX, 0, 0, dpr * patternScaleY, 0, 0);
     };
 
     const updatePattern = () => {
@@ -75,15 +78,45 @@ const Noise: React.FC<NoiseProps> = ({
         drawGrain();
       }
       frame++;
-      window.requestAnimationFrame(loop);
+      animationId = window.requestAnimationFrame(loop);
+    };
+
+    const start = () => {
+      if (animationId == null) {
+        animationId = window.requestAnimationFrame(loop);
+      }
+    };
+
+    const stop = () => {
+      if (animationId != null) {
+        window.cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    };
+
+    const handleVisibility = () => {
+      if (document.hidden) stop();
+      else start();
     };
 
     window.addEventListener("resize", resize);
     resize();
-    loop();
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+    if (prefersReducedMotion.matches) {
+      updatePattern();
+      drawGrain();
+    } else {
+      start();
+      document.addEventListener("visibilitychange", handleVisibility);
+    }
 
     return () => {
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      stop();
     };
   }, [
     patternSize,
@@ -95,7 +128,7 @@ const Noise: React.FC<NoiseProps> = ({
 
   return (
     <canvas
-      className="absolute left-0 top-0 w-screen h-screen"
+      className="absolute left-0 top-0 w-screen h-screen pointer-events-none"
       ref={grainRef}
     />
   );

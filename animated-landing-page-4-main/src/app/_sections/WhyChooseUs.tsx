@@ -6,12 +6,17 @@ import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
 
 export function WhyChooseUs() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLElement | null>(null);
+  const isInView = useInView(ref, {
+    once: true,
+    // Trigger earlier: when ~40% of the section has entered the viewport
+    margin: "0px 0px -60% 0px",
+    amount: 0.1,
+  });
 
   return (
-    <section className="bg-gradient-to-b from-blue-200 to-white w-screen min-h-[80vh] flex justify-center items-center relative py-20 px-4 overflow-hidden">
-      <div className="max-w-5xl mx-auto relative z-10" ref={ref}>
+    <section ref={ref} className="bg-gradient-to-b from-blue-200 to-white w-screen min-h-[80vh] flex justify-center items-center relative py-20 px-4 overflow-hidden">
+      <div className="max-w-5xl mx-auto relative z-10">
         <p className="text-center mb-8 md:mb-2 text-sm md:text-base flex items-center justify-center gap-2 text-black/80 animate-fade-in-up">
           Why Partner With Us? <ArrowDown className="w-4 h-4" />
         </p>
@@ -54,9 +59,9 @@ export function WhyChooseUs() {
                   className={`text-5xl md:text-9xl text-center text-black ${stat.classN} bg-clip-text flex items-center justify-center text-transparent`}
                 >
                   <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 1.5, delay: index * 0.2 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.8, delay: index * 0.05 }}
                   >
                     {stat.value}
                   </motion.span>

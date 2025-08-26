@@ -48,7 +48,8 @@ export default function Footer({ onServiceClick }: FooterProps): JSX.Element {
                   icon: Facebook,
                   color: "#1111aa",
                   label: "Facebook",
-                  link: "https://www.facebook.com/nexsite.in",
+                  link:
+                    "https://www.facebook.com/share/1Ddpxibruq/?mibextid=wwXIfr",
                 },
                 {
                   icon: Instagram,
@@ -60,7 +61,7 @@ export default function Footer({ onServiceClick }: FooterProps): JSX.Element {
                   icon: Linkedin,
                   color: "#0A66C2",
                   label: "LinkedIn",
-                  link: "https://www.linkedin.com/company/nexsite-consultancy/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BYYAnhvViQiCaj6CNZbWDnQ%3D%3D",
+                  link: "https://www.linkedin.com/company/nexsiteagri/about/",
                 },
                 {
                   icon: Youtube,
@@ -72,13 +73,15 @@ export default function Footer({ onServiceClick }: FooterProps): JSX.Element {
                   icon: XLogo,
                   color: "#1111aa",
                   label: "X",
-                  link: "https://x.com/nexsite_in",
+                  link: "https://x.com/Nexsite_?t=B37i7XcVamup2_MU-F97-w&s=08",
                 },
               ].map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.link}
                   title={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ y: -4, scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-2 rounded-lg bg-white hover:bg-blue-50 transition-colors duration-300"
